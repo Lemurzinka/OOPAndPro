@@ -5,13 +5,13 @@ public class Product {
 	private int price; 
 	private String description; 
 	private double weight;
-		public Products(int price, String description, double weight) {
+		public Product(int price, String description, double weight) {
 		super();
 		this.price = price;
 		this.description = description;
 		this.weight = weight;
 	}
-	public Products() {
+	public Product() {
 		super();
 	}
 	public int getPrice() {
