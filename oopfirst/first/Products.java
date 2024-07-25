@@ -5,7 +5,15 @@ public class Products {
 	private int price; 
 	private String description; 
 	private double weight;
-	
+		public Products(int price, String description, double weight) {
+		super();
+		this.price = price;
+		this.description = description;
+		this.weight = weight;
+	}
+	public Products() {
+		super();
+	}
 	public int getPrice() {
 		return price;
 	}
@@ -24,15 +32,7 @@ public class Products {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-	public Products(int price, String description, double weight) {
-		super();
-		this.price = price;
-		this.description = description;
-		this.weight = weight;
-	}
-	public Products() {
-		super();
-	}
+
 	@Override
 	public String toString() {
 		return "Products [price=" + price + "₴, description=" + description + ", weight=" + weight + " grams]";
