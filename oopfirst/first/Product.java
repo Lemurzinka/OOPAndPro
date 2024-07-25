@@ -1,6 +1,6 @@
 package oopfirst;
 
-public class Products {
+public class Product {
 
 	private int price; 
 	private String description; 
@@ -35,7 +35,7 @@ public class Products {
 
 	@Override
 	public String toString() {
-		return "Products [price=" + price + "₴, description=" + description + ", weight=" + weight + " grams]";
+		return "Product [price=" + price + "₴, description=" + description + ", weight=" + weight + " grams]";
 	} 
 	
 	
