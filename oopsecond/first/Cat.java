@@ -23,7 +23,8 @@ public void setName(String name) {
 
 @Override
 public String toString() {
-	return "Cat [name=" + name + "]";
+	return "Cat [name=" + name + "\', " +
+                 super.toString() + "]";
 }
 
 @Override
