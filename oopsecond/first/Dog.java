@@ -25,7 +25,8 @@ public void setName(String name) {
 
 @Override
 public String toString() {
-	return "Dog [name=" + name + "]";
+	return "Dog [name=" + name + "\', " +
+                 super.toString() + "]";
 }
 
 
