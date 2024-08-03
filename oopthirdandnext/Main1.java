@@ -33,6 +33,15 @@ public class Main1 {
 		System.out.println(g1.removeStudentByID(11));
 		System.out.println(g1.toString());
 		
+		
+//		ReadAndAddStudent ra = new ReadAndAddStudent();
+//		System.out.println(ra.readStudent());
+		
+		CSVStringConverter csv = new CSVStringConverter();
+		String csv1 = csv.toStringRepresentation(student1);
+		
+	    System.out.println(csv.toStringRepresentation(student1));
+	    System.out.println(csv.fromStringRepresentation(csv1));
 
 	}
 
