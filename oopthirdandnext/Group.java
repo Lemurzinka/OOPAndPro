@@ -78,7 +78,7 @@ public class Group {
 		}return false; 
 	}
 	
-	public Student [] SortStdLastName () {
+	public Student [] sortStdLastName () {
 		Student [] real = new Student [0];
 		for (int i = 0, j = 0; i < students.length; i++) {
 			if (students[i] != null) {
