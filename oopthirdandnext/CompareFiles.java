@@ -26,6 +26,7 @@ public class CompareFiles {
 				readBytes2 = reader2.read(arr2);
 				
 				if (!(Arrays.equals(arr1, arr2))) {
+					System.out.println("Files are not equals");
 					return false;
 				}
 				if (readBytes1 <= 0 && readBytes2 <=0) {break;}
@@ -35,6 +36,7 @@ public class CompareFiles {
 		catch (IOException e ) {
 			e.printStackTrace();
 		}
+		System.out.println("Files are equals");
 		return true;
 		}
 	

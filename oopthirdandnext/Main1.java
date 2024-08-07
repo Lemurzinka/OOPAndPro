@@ -2,6 +2,7 @@ package oopthird;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main1 {
 
@@ -52,22 +53,12 @@ public class Main1 {
 	    
 	    
 	    
-File file1; 
-File file2;
-CompareFiles cf = new CompareFiles();
- if (args.length ==2) {
-	 file1 = new File(args[0]);
-	 file2 = new File(args[1]);
- }else {
-		file1 = new File("D:\\new.csv");
-		file2 = new File("D:\\\\new-copy.csv");
-	}
-	   cf.isEquels(file1, file2);
-
-		for (int i = 0; i < args.length; i++) {
-			System.out.println(args[i]);
-		}
-	  
+	    Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter first file address");
+        File file1 = new File(scanner.nextLine());
+        System.out.println("Enter second file address");
+        File file2 = new File(scanner.nextLine());
+        CompareFiles.isEquels(file1, file2);
 	}
 
 }
