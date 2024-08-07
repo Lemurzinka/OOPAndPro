@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class CompareFiles {
 
 	
-	boolean isEquels (File file1, File file2) {
+	public static boolean isEquels (File file1, File file2) {
 		
 		int readBytes1 = 0; 
 		int readBytes2 = 0;
