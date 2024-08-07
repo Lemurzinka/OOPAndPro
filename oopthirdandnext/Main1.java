@@ -1,8 +1,11 @@
 package oopthird;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Main1 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)   {
 		
 		Student student1 = new Student("Denis", "Dan", Gender.MALE);
 		Student student2 = new Student("Jack", "Clones", Gender.MALE);
@@ -42,7 +45,29 @@ public class Main1 {
 		
 	    System.out.println(csv.toStringRepresentation(student1));
 	    System.out.println(csv.fromStringRepresentation(csv1));
+	    
+	    
+	    
+	    GroupFileStorage gfs = new GroupFileStorage();
+	    
+	    
+	    
+File file1; 
+File file2;
+CompareFiles cf = new CompareFiles();
+ if (args.length ==2) {
+	 file1 = new File(args[0]);
+	 file2 = new File(args[1]);
+ }else {
+		file1 = new File("D:\\new.csv");
+		file2 = new File("D:\\\\new-copy.csv");
+	}
+	   cf.isEquels(file1, file2);
 
+		for (int i = 0; i < args.length; i++) {
+			System.out.println(args[i]);
+		}
+	  
 	}
 
 }
