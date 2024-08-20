@@ -115,15 +115,14 @@ public class Group {
 	public boolean isEqualsInGroup () {
 		
 	for (int i = 0; i<students.length; i++) {
-for (int j = 0; j<students.length; j++) {
-	if (students[i] != null) {
-		if (students[i].equals(students[j]) && i!=j)  {
-			return true;
-		}
+for (int j = 0 ; j<students.length; j++) {
+	if (students[i] != null && students[j] != null & i != j && students[i].equals(students[j])) {
+		return true;
+	}
 	}
 
 }
-	}
+	
 		return false;
 		
 	}
