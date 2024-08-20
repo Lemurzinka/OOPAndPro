@@ -1,6 +1,7 @@
 package oopthird;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Group {
 
@@ -78,7 +79,7 @@ public class Group {
 		}return false; 
 	}
 	
-	public Student [] sortStdLastName () {
+	public Student [] SortStdLastName () {
 		Student [] real = new Student [0];
 		for (int i = 0, j = 0; i < students.length; i++) {
 			if (students[i] != null) {
@@ -90,5 +91,27 @@ public class Group {
 		Arrays.sort(real, (s1, s2) -> s1.getLastName().compareTo(s2.getLastName()));
 	return real;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(students);
+		result = prime * result + Objects.hash(groupName);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Group other = (Group) obj;
+		return Objects.equals(groupName, other.groupName) && Arrays.equals(students, other.students);
+	}
+	
+	
+	
 	
 }
