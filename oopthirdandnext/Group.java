@@ -1,5 +1,6 @@
 package oopthird;
 
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -111,7 +112,21 @@ public class Group {
 		return Objects.equals(groupName, other.groupName) && Arrays.equals(students, other.students);
 	}
 	
-	
+	public boolean isEqualsInGroup () {
+		
+	for (int i = 0; i<students.length; i++) {
+for (int j = 0; j<students.length; j++) {
+	if (students[i] != null) {
+		if (students[i].equals(students[j]) && i!=j)  {
+			return true;
+		}
+	}
+
+}
+	}
+		return false;
+		
+	}
 	
 	
 }
