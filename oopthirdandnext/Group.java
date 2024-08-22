@@ -1,17 +1,23 @@
 package oopthird;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Objects;
 
 public class Group {
 
 	private String groupName; 
-	private Student[] students = new Student[10];
+	private ArrayList<Student> students = new ArrayList<Student>();
+
+	
+
+	
 	public Group(String groupName) {
 		super();
 		this.groupName = groupName;
-		
+		this.students = new ArrayList<>();
 	}
 	public Group() {
 		super();
@@ -22,16 +28,18 @@ public class Group {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-	public Student[] getStudents() {
+ 
+	public ArrayList<Student> getStudents() {
 		return students;
 	}
-	public void setStudents(Student[] students) {
+	public void setStudents(ArrayList<Student> students) {
 		this.students = students;
 	}
+	
 	@Override
 	public String toString() {
-		Student[] temp = SortStdLastName();
-		StringBuilder array = new StringBuilder("Group: " + groupName + "; " + temp.length + " students: " + System.lineSeparator());
+		ArrayList<Student> temp = sortStdLastName();
+		StringBuilder array = new StringBuilder("Group: " + groupName + "; " + temp.size() + " students: " + System.lineSeparator());
 		for (Student i: temp) {
 			array.append("Student: " + i.getLastName() + " " + i.getName() + "; id: " + i.getId()+ " |" + i.getGender() + System.lineSeparator() );
 		}
@@ -39,66 +47,58 @@ public class Group {
 	} 
 	
 	public void addStudent (Student student) throws GroupOverflowException {
-		if (student != null) {for (int i = 0; i<students.length; i++) {
-			if (students[i] == null) {
-				student.setGroupName(groupName);
-				student.setId(i+1);
-				 students[i] = student; 
-				 return;
-				} 
-			}
+		if (student!= null) { 
+		if (students.size()<10) {
+			student.setGroupName(groupName);
+			students.add(student);
+			student.setId(students.indexOf(student));
+		}
 		
-		throw new GroupOverflowException();}
-		
+			
+		}}
 		
 		
 		
 		
-	}
+		
+	
 	
 	public Student searchStudentByLastName (String lastName) throws StudentNotFoundException{
 		
-		for (int i = 0; i < students.length; i++) {
-			if(students[i] != null) {
-				if (students[i].getLastName().equals(lastName)) {
-					return students[i];
-				}
+		for (Student student : students) { 
+			if (student.getLastName().equals(lastName)) {
+				return student;
 			}
-		} throw new StudentNotFoundException();
+			
+		}
+		 throw new StudentNotFoundException();
 		
 	}
 	
 	public boolean removeStudentByID (int id) {
 		
-		for (int i = 0; i < students.length; i++) {
-			if (students[i] != null) {
-				if (students[i].getId() == id ) {
-					students[i] = null;
-					return true;
-				}
+		for (Student student : students) { 
+			if (student.getId() == id) {
+				students.remove(student);
+				return true;
 			}
-		}return false; 
+			
+		}return false;
+		
 	}
 	
-	public Student [] SortStdLastName () {
-		Student [] real = new Student [0];
-		for (int i = 0, j = 0; i < students.length; i++) {
-			if (students[i] != null) {
-				real = Arrays.copyOf(real, j +1);
-				real[j] = students[i];
-				j++;
-			}
-		}
-		Arrays.sort(real, (s1, s2) -> s1.getLastName().compareTo(s2.getLastName()));
-	return real;
+	public ArrayList<Student> sortStdLastName () {
+		
+	Collections.sort(students, new StudentsLastNameComparator());
+
+	return students;
 	}
+
+	
+	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(students);
-		result = prime * result + Objects.hash(groupName);
-		return result;
+		return Objects.hash(groupName, students);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -109,14 +109,17 @@ public class Group {
 		if (getClass() != obj.getClass())
 			return false;
 		Group other = (Group) obj;
-		return Objects.equals(groupName, other.groupName) && Arrays.equals(students, other.students);
+		return Objects.equals(groupName, other.groupName) && Objects.equals(students, other.students);
 	}
+	
 	
 	public boolean isEqualsInGroup () {
 		
-	for (int i = 0; i<students.length; i++) {
-for (int j = 0 ; j<students.length; j++) {
-	if (students[i] != null && students[j] != null & i != j && students[i].equals(students[j])) {
+
+		
+	for (int i = 0; i<students.size(); i++) {
+for (int j = i+1 ; j<students.size(); j++) {
+	if (students.get(i).equals(students.get(j))) {
 		return true;
 	}
 	}
