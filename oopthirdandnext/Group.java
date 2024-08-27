@@ -52,7 +52,7 @@ public class Group {
 			student.setGroupName(groupName);
 			students.add(student);
 			student.setId(students.indexOf(student));
-		}
+		}throw new GroupOverflowException();
 		
 			
 		}}
